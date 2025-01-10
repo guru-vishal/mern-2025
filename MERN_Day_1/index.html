@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        div{
+            margin:195px 500px;
+            padding:50px;
+        }
+        form{
+            width:200px;
+            padding:50px;   
+            border:20px solid rgb(43, 97, 233);
+            background-color: aliceblue;
+            
+        }
+        #submit
+        {
+            margin:30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form id="login">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <input type="submit" id="submit" onclick="redirect()">
+        </form>
+
+    </div>
+    <script>
+        
+         function redirect() {
+            const username=document.getElementById("username");
+            const password=document.getElementById("password");
+            event.preventDefault();
+            if(username.value && password.value)
+            {
+                window.location.href = 'Form1.html'; 
+            }
+            //another way 
+          /* 
+            const tag=document.getElementByTagName("input");
+            
+            if(tag[0].value && tag[1].value)
+            {
+                window.location.href = 'Form1.html'; 
+            }
+
+          */
+        };
+    
+      </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="table">
+    </div>
+    <script>
+        var body = document.getElementById("table");
+        var data = [
+            { Name: "name1", age: 16, cgpa: 9, dept: "cse" },
+            { Name: "name2", age: 17, cgpa: 8, dept: "cse" },
+            { Name: "name3", age: 17, cgpa: 8.5, dept: "cse" }
+        ];
+
+        var table = document.createElement("table");
+        var thead = document.createElement("thead");
+        var tbody = document.createElement("tbody");
+
+        var tr = document.createElement("tr");
+        Object.keys(data[0]).forEach(key => {
+            var th = document.createElement("th");
+            th.textContent = key;
+            tr.appendChild(th);
+        });
+        var gradeHeader = document.createElement("th");
+        gradeHeader.textContent = "grade";
+        tr.appendChild(gradeHeader);
+        thead.appendChild(tr);
+        table.appendChild(thead);
+
+        // Calculate grades using map
+        var grades = data.map(item => item.cgpa >= 9 ? "A" : "B");
+
+        // Populate the table body
+        data.forEach((item, index) => {
+            var tr = document.createElement("tr");
+
+            Object.values(item).forEach(value => {
+                var td = document.createElement("td");
+                td.textContent = value;
+                tr.appendChild(td);
+            });
+
+            // Append the grade for the current row
+            var tdGrade = document.createElement("td");
+            tdGrade.textContent = grades[index];
+            tr.appendChild(tdGrade);
+
+            tbody.appendChild(tr);
+        });
+
+        table.appendChild(tbody);
+        body.appendChild(table);
+        /*var a = [
+            { firstname: "Guru", lastname: "Vishal" }
+        ];
+
+        document.write("<table border='1'>");
+        
+        document.write("<tr><th>Firstname</th><th>Lastname</th></tr>");
+        
+        a.forEach(row => {
+            document.write("<tr><td>" + row.firstname + "</td><td>" + row.lastname + "</td></tr>");
+        });
+        
+        document.write("</table>");*/
+
+       /* var a = [
+            { firstname: "Sheela", age: 19,CGPA:9.7,Dept:"AIDS" },
+            { firstname: "Beena", age: 19,CGPA:9.3,Dept:"AIDS" },
+            {firstname: "Sheena", age: 19,CGPA:9.1,Dept:"AIDS"}
+        ];
+
+        document.write("<table border='1'>");
+        
+            document.write("<tr><th>Firstname</th><th>Age</th><th>CGPA</th><th>Dept</th></tr>");
+            
+            a.forEach(row => {
+                document.write("<tr><td>" + row.firstname + "</td><td>" + row.age + "</td><td>" +row.CGPA + "</td><td>"+ row.Dept + "</td></tr>");
+            });
+            
+            document.write("</table>");*/
+    </script>
+</body>
+</html>
